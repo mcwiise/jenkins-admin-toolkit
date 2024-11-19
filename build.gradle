@@ -1,0 +1,30 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+group = 'com.example'
+version = '1.0.0'
+
+gradlePlugin {
+    plugins {
+        create("jenkinsAdminPlugin") {
+            id = "com.example.jenkins-admin-plugin"
+            implementationClass = "com.example.JenkinsAdminPlugin"  // Name of your plugin class
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation gradleApi()  // To use Gradle's API
+    implementation localGroovy()  // To use Groovy
+}
